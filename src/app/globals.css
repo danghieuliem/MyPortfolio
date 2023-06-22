@@ -3,25 +3,23 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+	--height-of-close-book: 620px;
+	--width-of-close-book: 400px;
+	--black-mine-shaft: #202020;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+* {
+	margin: 0px;
+	padding: 0px;
+	box-sizing: border-box;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+	@apply bg-yellow-cream-can;
+}
+
+.shadow-book {
+	box-shadow: 15px 16px 10px 0px rgba(0, 0, 0, 0.3);
+	-webkit-box-shadow: 15px 16px 10px 0px rgba(0, 0, 0, 0.3);
+	-moz-box-shadow: 15px 16px 10px 0px rgba(0, 0, 0, 0.3);
 }
