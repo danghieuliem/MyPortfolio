@@ -1,10 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
 	reactStrictMode: true,
-	basePath:  `MyPortfolio/`,
+	basePath: `/MyPortfolio`,
 
 	// Set the asset prefix for GitHub Pages
-	assetPrefix: `MyPortfolio/`,
+	assetPrefix: `/MyPortfolio`,
 
 	// Enable webpack 5 for better build performance
 	future: {
