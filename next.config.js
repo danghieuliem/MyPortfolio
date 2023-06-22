@@ -13,6 +13,7 @@ const nextConfig = {
 
 	// For GitHub Pages, set the trailing slash
 	trailingSlash: true,
+	output: 'export',
 };
 
 module.exports = nextConfig;
