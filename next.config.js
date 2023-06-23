@@ -4,7 +4,7 @@ const nextConfig = {
 	basePath: `/MyPortfolio`,
 
 	// Set the asset prefix for GitHub Pages
-	assetPrefix: `/MyPortfolio`,
+	assetPrefix: `./`,
 
 	// Enable webpack 5 for better build performance
 	future: {
