@@ -1,19 +1,20 @@
+const { omitBy, isNil } = require("lodash");
+
 /** @type {import('next').NextConfig} */
+const { APP_NODE_ENV } = process.env;
+const basePath = APP_NODE_ENV === "dev" ? "" : "/MyPortfolio";
+const output = APP_NODE_ENV === "dev" ? null : "export";
+
 const nextConfig = {
 	reactStrictMode: true,
-	basePath: `/MyPortfolio`,
+	basePath: basePath,
 
 	// Set the asset prefix for GitHub Pages
 	assetPrefix: ``,
 
-	// Enable webpack 5 for better build performance
-	future: {
-		webpack5: true,
-	},
-
 	// For GitHub Pages, set the trailing slash
 	trailingSlash: true,
-	output: 'export',
+	output: output,
 };
 
-module.exports = nextConfig;
+module.exports = omitBy(nextConfig, isNil);
