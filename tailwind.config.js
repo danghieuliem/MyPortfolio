@@ -19,6 +19,9 @@ module.exports = {
 				"gray-cape-cod": "#494B4A",
 				"gray-spun-pearl": "#A8A6B3",
 			},
+			width: {
+				"closed-book-desktop": "420px",
+			},
 		},
 	},
 	plugins: [],

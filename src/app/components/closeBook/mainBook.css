@@ -1,0 +1,6 @@
+/* "tailwind css" */
+
+.left-light-of-book::after {
+	@apply absolute top-0 left-5 h-full w-px bg-gray-cape-cod z-20;
+	content: "";
+}

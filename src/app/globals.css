@@ -17,9 +17,3 @@
 body {
 	@apply bg-yellow-cream-can;
 }
-
-.shadow-book {
-	box-shadow: 15px 16px 10px 0px rgba(0, 0, 0, 0.3);
-	-webkit-box-shadow: 15px 16px 10px 0px rgba(0, 0, 0, 0.3);
-	-moz-box-shadow: 15px 16px 10px 0px rgba(0, 0, 0, 0.3);
-}

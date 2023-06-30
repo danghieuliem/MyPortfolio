@@ -1,6 +1,6 @@
+/** @type {import('next').NextConfig} */
 const { omitBy, isNil } = require("lodash");
 
-/** @type {import('next').NextConfig} */
 const { APP_NODE_ENV } = process.env;
 const output = APP_NODE_ENV === "dev" ? null : "export";
 

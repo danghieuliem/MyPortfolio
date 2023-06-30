@@ -1,0 +1,144 @@
+@keyframes bookCover {
+	0% {
+		z-index: 100;
+	}
+	30% {
+		z-index: 100;
+	}
+	100% {
+		transform: rotateY(-180deg);
+		z-index: 1;
+	}
+}
+@keyframes bookPage {
+	0% {
+		z-index: 10;
+	}
+	30% {
+		z-index: 100;
+	}
+	100% {
+		transform: rotateY(-180deg);
+		z-index: 1;
+	}
+}
+@keyframes changeWidthMain {
+	0% {
+		width: 420px;
+	}
+	100% {
+		width: 840px;
+	}
+}
+@keyframes bookOpen150deg {
+	30% {
+		z-index: 100;
+	}
+	100% {
+		transform: rotateY(-150deg);
+		z-index: 100;
+	}
+}
+@keyframes bookOpen55deg {
+	30% {
+		z-index: 100;
+	}
+	100% {
+		transform: rotateY(-55deg);
+		z-index: 100;
+	}
+}
+@keyframes bookOpen30deg {
+	50% {
+		z-index: 100;
+	}
+	100% {
+		transform: rotateY(-30deg);
+		z-index: 100;
+	}
+}
+@keyframes shadowBook {
+	100% {
+		box-shadow: -15px 16px 10px 0px rgba(0, 0, 0, 0.3);
+		-webkit-box-shadow: -15px 16px 10px 0px rgba(0, 0, 0, 0.3);
+		-moz-box-shadow: -15px 16px 10px 0px rgba(0, 0, 0, 0.3);
+	}
+}
+.main-book {
+	perspective: 3720px;
+}
+.animation.main-book {
+	animation: changeWidthMain 3s forwards;
+	perspective: 3720px;
+}
+.book-cover {
+	box-sizing: border-box;
+	transform-origin: 0% 0;
+}
+.animation.book-cover {
+	animation: bookCover 3s forwards;
+}
+.page {
+	box-sizing: border-box;
+	transform-origin: 0% 0;
+	z-index: 5;
+	padding: 16px;
+	border-radius: 5px 0 0 5px;
+	box-shadow: inset 3px 0px 20px rgba(0, 0, 0, 0.2),
+		0px 0px 15px rgba(0, 0, 0, 0.1);
+	box-sizing: border-box;
+}
+.animation.page {
+	animation: bookPage 3s forwards;
+}
+/* cover-back */
+.animation.page:nth-of-type(2) {
+	z-index: 10;
+}
+.animation.page:nth-of-type(3) {
+	z-index: 9;
+	animation-delay: 0.05s;
+	/* animation-delay: 3.05s; */
+}
+.animation.page:nth-of-type(4) {
+	z-index: 8;
+	animation-delay: 0.33s;
+	/* animation-delay: 3.33s; */
+}
+.animation.page:nth-of-type(5) {
+	z-index: 7;
+	animation-delay: 0.66s;
+	/* animation-delay: 3.66s; */
+}
+.animation.page:nth-of-type(6) {
+	z-index: 6;
+	animation: bookOpen150deg 3s forwards;
+	animation-delay: 0.99s;
+	/* animation-delay: 3.99s; */
+}
+.animation.page:nth-of-type(7) {
+	z-index: 5;
+	animation: bookOpen30deg 3s forwards;
+	animation-delay: 1.2s;
+	/* animation-delay: 4.2s; */
+}
+.animation.page:nth-of-type(8) {
+	z-index: 4;
+	animation: bookOpen55deg 3s forwards;
+	animation-delay: 1.25s;
+	/* animation-delay: 4.25s; */
+}
+.shadow-book {
+	box-shadow: 15px 16px 10px 0px rgba(0, 0, 0, 0.3);
+	-webkit-box-shadow: 15px 16px 10px 0px rgba(0, 0, 0, 0.3);
+	-moz-box-shadow: 15px 16px 10px 0px rgba(0, 0, 0, 0.3);
+}
+.animation.shadow-book {
+	animation: shadowBook 3s forwards;
+}
+.page.normal {
+	top: 10px;
+	right: 20px;
+	width: 400px;
+	height: 600px;
+}

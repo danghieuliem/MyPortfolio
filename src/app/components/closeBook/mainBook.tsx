@@ -5,24 +5,21 @@ import bgBe from "@/app/assets/background-be.svg";
 import findBugIcon from "@/app/assets/find-bug.svg";
 import bugIcon from "@/app/assets/bug.svg";
 import ambulanceIcon from "@/app/assets/ambulance.svg";
-import React, { useEffect, useRef, useState } from "react";
-import "./closeBook.css";
+import React, { useEffect } from "react";
+import "./mainBook.css";
+import "./animationBookOpen.css";
 
 const kaushanScript = Kaushan_Script({
 	subsets: ["latin"],
 	weight: "400",
 });
-const styleOfCloseBook = {
+const styleOfBookCover = {
 	lineBook: 20,
 	height: 620,
 	width: 400,
 };
 
 export default function CloseBook() {
-	// const [rotate, setRotate] = useState<number>(-90);
-	// const [scale, setScale] = useState<number>(1.5);
-	const ref = useRef(null);
-
 	const Background = () => (
 		<div className="background-be absolute w-full h-full">
 			<div className="absolute w-full h-full bg-gray-cape-cod"></div>
@@ -36,10 +33,10 @@ export default function CloseBook() {
 			<div
 				className="absolute w-full h-full border-solid border-t-black-mine-shaft border-l-black-mine-shaft border-r-transparent border-b-transparent"
 				style={{
-					borderRightWidth: `${styleOfCloseBook.width / 2}px`,
-					borderBottomWidth: `${styleOfCloseBook.height / 2}px`,
-					borderTopWidth: `${styleOfCloseBook.height / 2}px`,
-					borderLeftWidth: `${styleOfCloseBook.width / 2}px`,
+					borderRightWidth: `${styleOfBookCover.width / 2}px`,
+					borderBottomWidth: `${styleOfBookCover.height / 2}px`,
+					borderTopWidth: `${styleOfBookCover.height / 2}px`,
+					borderLeftWidth: `${styleOfBookCover.width / 2}px`,
 				}}
 			></div>
 
@@ -74,6 +71,7 @@ export default function CloseBook() {
 			</div>
 		</div>
 	);
+
 	const Line = () => (
 		<div className="line absolute h-full w-full">
 			<div className="bottom-left h-full w-full absolute left-4 bottom-64 -mb-2">
@@ -86,6 +84,7 @@ export default function CloseBook() {
 			</div>
 		</div>
 	);
+
 	const Title = () => (
 		<div className="absolute h-full flex flex-col justify-center items-center w-full">
 			<div className="w-80 h-24 relative">
@@ -102,53 +101,72 @@ export default function CloseBook() {
 			</div>
 		</div>
 	);
+
 	const Author = () => (
 		<div className="author absolute right-12 bottom-52 text-white">
 			Đặng Hiếu Liêm
 		</div>
 	);
 
+	const BookCover = () => (
+		<div className="book-cover is-have-animation relative z-10 h-full w-closed-book-desktop">
+			<div className="is-have-animation absolute flex shadow-book overflow-hidden h-full w-closed-book-desktop">
+				<div className="left-light-of-book w-5 h-full bg-black-mine-shaft"></div>
+				<div
+					className="relative"
+					style={{
+						width: styleOfBookCover.width,
+					}}
+				>
+					<Background />
+					<Title />
+					<Line />
+					<Author />
+				</div>
+			</div>
+		</div>
+	);
+
 	useEffect(() => {
-		document.addEventListener("click", () => {
-			const currentClassList = (ref.current as any)?.classList;
-			if (!currentClassList) return;
-			currentClassList.remove("-rotate-90");
-			currentClassList.remove("scale-150");
-			currentClassList.add("animation");
-		});
+		const event = (ev: any) => {
+			// TODO:
+			const isHaveAnimation = document.getElementsByClassName("animation");
+			if (isHaveAnimation.length) return;
+			const elements = document.getElementsByClassName("is-have-animation");
+			Array.from(elements || []).forEach((el) => {
+				el.classList.add("animation");
+			});
+		};
+
+		document.addEventListener("click", event);
 
 		return () => {
-			document.removeEventListener("click", () => {});
+			document.removeEventListener("click", event);
 		};
 	}, []);
 
 	return (
 		<div
-			// ref={ref}
-			className="close-book relative flex overflow-hidden shadow-book" // -rotate-90 scale-150
+			className="main-view flex flex-col justify-center items-center h-screen w-full px-20"
+			style={{ minHeight: styleOfBookCover.height }}
 		>
-			<div className="left-light-of-book w-5 h-full bg-black-mine-shaft "></div>
 			<div
-				className="content-close-book relative"
+				className="main-book is-have-animation flex flex-row-reverse hover:cursor-pointer h-full w-closed-book-desktop"
 				style={{
-					width: styleOfCloseBook.width,
+					height: styleOfBookCover.height,
 				}}
 			>
-				<Background />
-				<Title />
-				<Line />
-				<Author />
+				<BookCover />
+				<div className="page is-have-animation absolute bg-gray-cape-cod h-full w-closed-book-desktop"></div>
+				<div className="page normal is-have-animation absolute bg-gray-spun-pearl h-full w-closed-book-desktop"></div>
+				<div className="page normal is-have-animation absolute bg-gray-spun-pearl h-full w-closed-book-desktop"></div>
+				<div className="page normal is-have-animation absolute bg-gray-spun-pearl h-full w-closed-book-desktop"></div>
+				<div className="page normal is-have-animation absolute bg-gray-spun-pearl h-full w-closed-book-desktop"></div>
+				<div className="page normal is-have-animation absolute bg-gray-spun-pearl h-full w-closed-book-desktop"></div>
+				<div className="page normal is-have-animation absolute bg-gray-spun-pearl h-full w-closed-book-desktop"></div>
+				<div className="page normal absolute bg-gray-spun-pearl h-full w-closed-book-desktop"></div>
+				<div className="absolute bg-gray-cape-cod h-full w-closed-book-desktop shadow-book"></div>
 			</div>
-
-			<span className="page turn"></span>
-			<span className="page turn"></span>
-			<span className="page turn"></span>
-			<span className="page turn"></span>
-			<span className="page turn"></span>
-			<span className="page turn"></span>
-			<span className="cover"></span>
-			<span className="page"></span>
-			<span className="cover turn"></span>
 		</div>
 	);
 }
